@@ -1,0 +1,66 @@
+﻿@page
+@model MyStore.Pages.Clients.IndexModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+       th{
+           background-color:gray;
+
+       }
+       td{
+          font-size:14px;
+          font-weight:400;                
+       }
+    </style>
+</head>
+<body class="bg-slate-100">
+
+    <a href="./Clients/Create" class="text-green font-medium text-blue-200 bg-green-600 rounded-1 cursor-pointer no-underline p-1 active:bg-gray-500  transition-[.5] active:bg-slate-300">New Client</a>
+    <table class="shadow-lg bg-white mt-3 container mx-auto p-2">
+        
+ <caption class="caption-top text-slate-700 font-bold text-xl">Lists Of Client</caption>
+        <tr>
+            <th class="bg-blue-200 border text-left px-3 py-2">ID</th>
+            <th class="bg-blue-200 border text-left px-3 py-2">Name</th>
+            <th class="bg-blue-200 border text-left px-3 py-2">Email</th>
+            <th class="bg-blue-200 border text-left px-3 py-2">Phone</th>
+            <th class="bg-blue-200 border text-left px-3 py-2">Address</th>
+            <th class="bg-blue-200 border text-left px-3 py-2">Created_At</th>
+            <th class="bg-blue-200 border text-left px-3 py-2">Action</th>
+
+
+
+        </tr>
+        <tbody>
+            @foreach (var item in Model.listClients)
+            {
+                <tr>
+
+                    <td class="border px-3 py-2">@item.id</td>
+                    <td class="border px-3 py-2">@item.name</td>
+                    <td class="border px-3 py-2">@item.email</td>
+                    <td class="border px-3 py-2">@item.phone</td>
+                    <td class="border px-3 py-2">@item.address</td>
+                    <td class="border px-3 py-2">@item.created_at</td>
+                    <td>
+                        <button class="bg-green-400 rounded-sm active:bg-slate-600"><a class=" no-underline p-1 text-white" href="/Clients/Edit?id=@item.id">Edit</a></button>
+
+                        <button class="bg-red-600 rounded-sm active:bg-slate-600"><a class=" no-underline p-1 text-white" href="/Clients/Delete?id=@item.id">Delete</a></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+       
+       
+       
+       
+    </table>
+</body>
+</html>
